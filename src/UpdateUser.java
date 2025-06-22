@@ -3,6 +3,8 @@ import dao.ConnectionProvider;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import java.util.Date;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -216,6 +218,62 @@ private String mobileNumberPattern = "^[0-9]{10}$";
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        String userRole = (String) comboUserRole.getSelectedItem();
+        String name = txtName.getText();
+        SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date date = dateDOB.getDate();
+        String dob = "";
+        if (date != null) {
+            dob = dFormat.format(dateDOB.getDate());
+        }
+
+        String mobileNumber = txtMobileNumber.getText();
+        String email = txtEmail.getText();
+        String username = txtUsername.getText();
+        String address = txtAddress.getText();
+
+        if (name.equals("")) {
+            JOptionPane.showMessageDialog(null, "Name field is required.");
+        } else if (dob.equals("")) {
+            JOptionPane.showMessageDialog(null, "Date Of Birth field is required.");
+        } else if (mobileNumber.equals("")) {
+            JOptionPane.showMessageDialog(null, "Mobile Number field is required.");
+        } 
+        else if (!mobileNumber.matches(mobileNumberPattern) || mobileNumber.length() != 10) {
+            JOptionPane.showMessageDialog(null, "Mobile Number field is invalid.");
+        } else if (email.equals("")) {
+            JOptionPane.showMessageDialog(null, "Email field is required.");
+        } else if (!email.matches(emailPattern)) {
+            JOptionPane.showMessageDialog(null, "Email field is invalid.");
+        } else if (username.equals("")) {
+            JOptionPane.showMessageDialog(null, "Username field is required.");
+        } else if (address.equals("")) {
+            JOptionPane.showMessageDialog(null, "Address field is required.");
+        } else {
+            try {
+                   Connection con= ConnectionProvider.getCon();
+                    if (con == null) {
+                        JOptionPane.showMessageDialog(null, "Database connection failed!");
+                        return;
+                    }
+                Statement st=con.createStatement();
+                PreparedStatement ps = con.prepareStatement("update appuser set userRole=?,name=?,dob=?,mobileNumber=?,email=?,address=? where username=?");
+                ps.setString(1,userRole);
+                ps.setString(2,name);
+                ps.setString(3,dob);
+                ps.setString(4,mobileNumber);
+                ps.setString(5,email);
+                ps.setString(6,address);
+                ps.setString(7,username);
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null,"User Updated Successfully");
+                setVisible(false);
+                new UpdateUser().setVisible(true);
+                
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
@@ -236,7 +294,7 @@ private String mobileNumberPattern = "^[0-9]{10}$";
         if(a==0){
             System.exit(0);
         }
-        setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
