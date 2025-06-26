@@ -8,6 +8,7 @@
  * @author thear
  */
 public class PharmacistDashboard extends javax.swing.JFrame {
+    private String username ="";
 
     /**
      * Creates new form PharmacistDashboard
@@ -15,6 +16,14 @@ public class PharmacistDashboard extends javax.swing.JFrame {
     public PharmacistDashboard() {
         initComponents();
     }
+    public PharmacistDashboard(String tempUsername) {
+    initComponents();
+    username = tempUsername;
+    setLocationRelativeTo(null);
+}
+    
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
