@@ -116,7 +116,7 @@ public class Login extends javax.swing.JFrame {
                         }
                 else{
                 setVisible(false);
-                new PharmacistDashboard().setVisible(true);
+                new PharmacistDashboard(username).setVisible(true);
                 }
             }
             if(temp==0){

@@ -16,7 +16,7 @@ import java.util.Date;
  */
 public class UpdateUser extends javax.swing.JFrame {
     
-private String emailPattern = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+private String emailPattern = "^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$";
 private String mobileNumberPattern = "^[0-9]{10}$";
 
 
