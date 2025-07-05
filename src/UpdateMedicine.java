@@ -170,8 +170,8 @@ if (uniqueId.equals("")) {
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery("select * from medicine where uniqueId='" + uniqueId + "'");
         
-        /
-/*while (rs.next()) {
+        
+while (rs.next()) {
             txtMedicineId.setEditable(false);
             txtName.setText(rs.getString("name"));
             txtCompanyName.setText(rs.getString("companyName"));
@@ -179,8 +179,7 @@ if (uniqueId.equals("")) {
             txtPricePerUnit.setText(rs.getString("price"));
             txtQuantity.setEditable(false);
             checkMedicineExist = 1; // You likely want to set this after finding a record
-        }
-                */
+}
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, e);
     }
