@@ -1,5 +1,7 @@
 
 import javax.swing.JOptionPane;
+//import pharmacy.UpdateMedicine;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -10,14 +12,13 @@ import javax.swing.JOptionPane;
  *
  * @author thear
  */
-public class PharmacistDashboard extends javax.swing.JFrame {
-<<<<<<< HEAD
+public class PharmacistDashboard extends javax.swing.JFrame 
+
+{
     private String username ="";
-=======
+
     
-    private String username ="";
-    
->>>>>>> d5d6feb (View med addition)
+
 
     /**
      * Creates new form PharmacistDashboard
@@ -26,21 +27,12 @@ public class PharmacistDashboard extends javax.swing.JFrame {
         initComponents();
     }
     public PharmacistDashboard(String tempUsername) {
-<<<<<<< HEAD
     initComponents();
     username = tempUsername;
     setLocationRelativeTo(null);
 }
-    
 
     
-=======
-        initComponents();
-        username =tempUsername;
-        setLocationRelativeTo(null);
-    }
->>>>>>> d5d6feb (View med addition)
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -131,6 +123,11 @@ public class PharmacistDashboard extends javax.swing.JFrame {
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/updateUser.png"))); // NOI18N
         jButton7.setText("Update Profile");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 489, 344, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
@@ -184,6 +181,17 @@ if (a == 0) {
         new ViewMedicine().setVisible(true);
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        
+     
+      new UpdateMedicine().setVisible(true);
+
+
+
+
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
