@@ -207,6 +207,12 @@ while (rs.next()) {
         String price = txtPricePerUnit.getText();
         String addQuantity = txtAddQuantity.getText();
 
+ int totalQuantity = 0;
+        if (addQuantity.equals("")) {
+            totalQuantity = Integer.parseInt(quantity);
+        } else {
+            totalQuantity = Integer.parseInt(quantity) + Integer.parseInt(addQuantity);
+        }
 
   
         }
