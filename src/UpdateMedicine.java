@@ -200,6 +200,14 @@ while (rs.next()) {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+ String uniqueId = txtMedicineId.getText();
+        String name = txtName.getText();
+        String companyName = txtCompanyName.getText();
+        String quantity = txtQuantity.getText();
+        String price = txtPricePerUnit.getText();
+        String addQuantity = txtAddQuantity.getText();
+
+
   
         }
 
