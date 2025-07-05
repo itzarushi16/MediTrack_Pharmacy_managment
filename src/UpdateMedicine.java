@@ -223,6 +223,29 @@ while (rs.next()) {
         } else if (!addQuantity.matches(numberPattern)) {
             JOptionPane.showMessageDialog(null, "Add Quantity field is invalid.");
 
+} else if (price.equals("")) {
+            JOptionPane.showMessageDialog(null, "Price Per Unit field is required.");
+        } else if (!price.matches(numberPattern)) {
+            JOptionPane.showMessageDialog(null, "Price Per Unit field is invalid.");
+        } else {
+             try {
+                Connection con = ConnectionProvider.getCon();
+                PreparedStatement ps = con.prepareStatement(
+                        "UPDATE medicine SET name = ?, companyName = ?, quantity = ?, price = ? WHERE uniqueId = ?"
+                );
+                ps.setString(1, name);
+                ps.setString(2, companyName);
+                ps.setInt(3, totalQuantity);
+                ps.setString(4, price);
+                ps.setString(5, uniqueId);
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Medicine updated successfully.");
+                setVisible(false);
+                new UpdateMedicine().setVisible(true);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+
 
   
         }
