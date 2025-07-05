@@ -214,6 +214,16 @@ while (rs.next()) {
             totalQuantity = Integer.parseInt(quantity) + Integer.parseInt(addQuantity);
         }
 
+        if (uniqueId.equals("")) {
+            JOptionPane.showMessageDialog(null, "Medicine ID field is required.");
+        } else if (name.equals("")) {
+            JOptionPane.showMessageDialog(null, "Name field is required.");
+        } else if (companyName.equals("")) {
+            JOptionPane.showMessageDialog(null, "Company Name field is required.");
+        } else if (!addQuantity.matches(numberPattern)) {
+            JOptionPane.showMessageDialog(null, "Add Quantity field is invalid.");
+
+
   
         }
 
