@@ -33,7 +33,9 @@ public class Tables {
        // st.executeUpdate(query);
        // st.execute("insert into appuser (userRole,name,dob,mobileNumber,email,username,password,address) values ('Admin','Admin','16-12-1992','0000111122','admin@email.com','admin','admin','India')");
        
-       st.execute("create table medicine(medicine_pk int AUTO_INCREMENT primary key,uniqueId varchar(200),name varchar(200),companyName varchar(200),quantity bigint,price bigint)");
+       //st.execute("create table medicine(medicine_pk int AUTO_INCREMENT primary key,uniqueId varchar(200),name varchar(200),companyName varchar(200),quantity bigint,price bigint)");
+       st.executeUpdate("create table bill(bill_pk int AUTO_INCREMENT primary key, billId varchar(200), billDate varchar(50), totalPaid bigint, generatedBy varchar(50))");
+
        JOptionPane.showMessageDialog(null,"Table Created Succesfully");
         
                 }
