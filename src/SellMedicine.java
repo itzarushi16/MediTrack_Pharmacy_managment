@@ -299,9 +299,44 @@ public String getUniqueId(String prefix){
     }//GEN-LAST:event_txtSearchKeyReleased
 
     private void medicinesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medicinesTableMouseClicked
-        // TODO add your handling code here:
+        //ERRRRO HAIII-------------------------------------------------------------------------------------------------
+      int index = medicinesTable.getSelectedRow();
+
+    if (index != -1) {
+        TableModel model = medicinesTable.getModel();
+        String selectedValue = model.getValueAt(index, 0).toString();
+
+        // Split the string using " - " with space around dash
+        String[] parts = selectedValue.split(" - ");
+        if (parts.length > 0) {
+            String selectedUniqueId = parts[0]; // e.g., "MED001"
+
+            try {
+                Connection con = ConnectionProvider.getCon();
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery("SELECT * FROM medicine WHERE uniqueId = '" + selectedUniqueId + "'");
+
+                if (rs.next()) {
+                    txtUniqueId.setText(rs.getString("uniqueId"));
+                    txtName.setText(rs.getString("name"));
+                    txtCompanyName.setText(rs.getString("companyName"));
+                    txtPricePerUnit.setText(rs.getString("price"));
+                    txtNoOfUnits.setText("");
+                    txtTotalPrice.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Medicine not found for ID: " + selectedUniqueId);
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error fetching medicine data:\n" + e);
+                e.printStackTrace();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Invalid table row format.");
+        }
+    }
         // Get selected row index
-int index = medicinesTable.getSelectedRow();
+       /* int index = medicinesTable.getSelectedRow();
         TableModel model = medicinesTable.getModel();
         String nameOrUniqueId = model.getValueAt(index, 0).toString();
 
@@ -321,11 +356,15 @@ int index = medicinesTable.getSelectedRow();
                 txtName.setText(rs.getString("name"));
                 txtCompanyName.setText(rs.getString("companyName"));
                 txtPricePerUnit.setText(rs.getString("price"));
+                txtNoOfUnits.setText("");
+                txtTotalPrice.setText("");
+
             }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+        */
 
     }//GEN-LAST:event_medicinesTableMouseClicked
 
