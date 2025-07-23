@@ -8,6 +8,10 @@
  * @author thear
  */
 public class SellMedicine extends javax.swing.JFrame {
+    public String numberPattern = "^[0-9]*$";
+    private int finalTotalPrice = 0;
+    private String billId = "";
+    private String username = "";
 
     /**
      * Creates new form SellMedicine
@@ -15,6 +19,13 @@ public class SellMedicine extends javax.swing.JFrame {
     public SellMedicine() {
         initComponents();
     }
+    
+    public SellMedicine(String tempUsername) {
+        initComponents();
+        username =tempUsername;
+        setLocationRelativeTo(null);
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
