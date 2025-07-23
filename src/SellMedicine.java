@@ -46,6 +46,13 @@ try {
 }
 
 
+    // process ResultSet here...
+
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(null, e);
+}
+
+
 
 
 }
