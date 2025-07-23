@@ -6,6 +6,7 @@ import dao.ConnectionProvider;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -299,7 +300,33 @@ public String getUniqueId(String prefix){
 
     private void medicinesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medicinesTableMouseClicked
         // TODO add your handling code here:
-        int 
+        // Get selected row index
+int index = medicinesTable.getSelectedRow();
+        TableModel model = medicinesTable.getModel();
+        String nameOrUniqueId = model.getValueAt(index, 0).toString();
+
+// Split uniqueId if needed
+        String uniqueId[] = nameOrUniqueId.split("-", 0);
+
+        try {
+            Connection con = ConnectionProvider.getCon();
+            Statement st = con.createStatement();
+
+            ResultSet rs = st.executeQuery(
+                    "SELECT * FROM medicine WHERE uniqueId = '" + uniqueId[0] + "'"
+            );
+
+            while (rs.next()) {
+                txtUniqueId.setText(uniqueId[0]);
+                txtName.setText(rs.getString("name"));
+                txtCompanyName.setText(rs.getString("companyName"));
+                txtPricePerUnit.setText(rs.getString("price"));
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
     }//GEN-LAST:event_medicinesTableMouseClicked
 
     /**
