@@ -44,18 +44,20 @@ try {
         rs.getString("uniqueId") + " - " + rs.getString("name")
     });
 }
-
-
-    // process ResultSet here...
-
 } catch (Exception e) {
     JOptionPane.showMessageDialog(null, e);
 }
-
-
-
-
 }
+
+private void clearMedicineFields() {
+    txtUniqueId.setText("");
+    txtName.setText("");
+    txtCompanyName.setText("");
+    txtPricePerUnit.setText("");
+    txtNoOfUnits.setText("");
+    txtTotalPrice.setText("");
+}
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,12 +80,12 @@ try {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        txtUniqueId = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
+        txtCompanyName = new javax.swing.JTextField();
+        txtPricePerUnit = new javax.swing.JTextField();
+        txtNoOfUnits = new javax.swing.JTextField();
+        txtTotalPrice = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
@@ -168,34 +170,34 @@ try {
         jLabel8.setText("Total Price");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(894, 313, -1, -1));
 
-        jTextField2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(508, 158, 285, -1));
+        txtUniqueId.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtUniqueId.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(txtUniqueId, new org.netbeans.lib.awtextra.AbsoluteConstraints(508, 158, 285, -1));
 
-        jTextField3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(508, 254, 285, -1));
+        txtName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtName.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(508, 254, 285, -1));
 
-        jTextField4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(508, 357, 285, -1));
+        txtCompanyName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtCompanyName.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(txtCompanyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(508, 357, 285, -1));
 
-        jTextField5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        txtPricePerUnit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtPricePerUnit.setForeground(new java.awt.Color(255, 255, 255));
+        txtPricePerUnit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                txtPricePerUnitActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(894, 158, 275, -1));
+        getContentPane().add(txtPricePerUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(894, 158, 275, -1));
 
-        jTextField6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(894, 254, 275, -1));
+        txtNoOfUnits.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtNoOfUnits.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(txtNoOfUnits, new org.netbeans.lib.awtextra.AbsoluteConstraints(894, 254, 275, -1));
 
-        jTextField7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(894, 357, 275, -1));
+        txtTotalPrice.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtTotalPrice.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(txtTotalPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(894, 357, 275, -1));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -249,9 +251,9 @@ try {
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void txtPricePerUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPricePerUnitActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_txtPricePerUnitActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -316,12 +318,12 @@ try {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTable medicinesTable;
+    private javax.swing.JTextField txtCompanyName;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtNoOfUnits;
+    private javax.swing.JTextField txtPricePerUnit;
+    private javax.swing.JTextField txtTotalPrice;
+    private javax.swing.JTextField txtUniqueId;
     // End of variables declaration//GEN-END:variables
 }
