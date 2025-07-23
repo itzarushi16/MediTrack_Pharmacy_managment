@@ -57,7 +57,9 @@ private void clearMedicineFields() {
     txtNoOfUnits.setText("");
     txtTotalPrice.setText("");
 }
-
+public String getUniqueId(String prefix){
+   return prefix +System.nanoTime();
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,7 +73,7 @@ private void clearMedicineFields() {
         jSeparator1 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtSearch = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         medicinesTable = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
@@ -96,6 +98,11 @@ private void clearMedicineFields() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -117,13 +124,18 @@ private void clearMedicineFields() {
         jLabel2.setText("Search");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 100, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtSearch.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtSearchActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 370, -1));
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 370, -1));
 
         medicinesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -136,6 +148,11 @@ private void clearMedicineFields() {
                 "Medicine"
             }
         ));
+        medicinesTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                medicinesTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(medicinesTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 227, 370, -1));
@@ -259,9 +276,31 @@ private void clearMedicineFields() {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        medicineName("");
+        txtUniqueId.setEditable(false);
+        txtName.setEditable(false);
+        txtCompanyName.setEditable(false);
+        txtPricePerUnit.setEditable(false);
+        txtTotalPrice.setEditable(false);
+
+    }//GEN-LAST:event_formComponentShown
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        String search =txtSearch.getText();
+        medicineName(search);
+    }//GEN-LAST:event_txtSearchKeyReleased
+
+    private void medicinesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medicinesTableMouseClicked
+        // TODO add your handling code here:
+        int 
+    }//GEN-LAST:event_medicinesTableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -317,12 +356,12 @@ private void clearMedicineFields() {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable medicinesTable;
     private javax.swing.JTextField txtCompanyName;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtNoOfUnits;
     private javax.swing.JTextField txtPricePerUnit;
+    private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtTotalPrice;
     private javax.swing.JTextField txtUniqueId;
     // End of variables declaration//GEN-END:variables
