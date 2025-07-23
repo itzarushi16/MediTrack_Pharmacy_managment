@@ -33,6 +33,18 @@ public class SellMedicine extends javax.swing.JFrame {
 private void medicineName(String nameOrUniqueId){
 DefaultTableModel model = (DefaultTableModel) medicinesTable.getModel();
 model.setRowCount(0);
+try {
+    Connection con = ConnectionProvider.getCon();
+    Statement st = con.createStatement();
+    ResultSet rs = st.executeQuery(
+        "SELECT * FROM medicine WHERE name LIKE '" + nameOrUniqueId + "%' OR uniqueId LIKE '" + nameOrUniqueId + "%'"
+    );
+    while (rs.next()) {
+    model.addRow(new Object[]{
+        rs.getString("uniqueId") + " - " + rs.getString("name")
+    });
+}
+
 
 
 
