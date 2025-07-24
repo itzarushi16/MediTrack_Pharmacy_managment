@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 import dao.ConnectionProvider;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
@@ -280,7 +281,16 @@ public String getUniqueId(String prefix){
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchActionPerformed
-
+      private void testTableData() {
+    System.out.println("=== Testing Table Data ===");
+    DefaultTableModel model = (DefaultTableModel) medicinesTable.getModel();
+    
+    System.out.println("Table row count: " + model.getRowCount());
+    for (int i = 0; i < model.getRowCount(); i++) {
+        Object value = model.getValueAt(i, 0);
+        System.out.println("Row " + i + ": " + value);
+    }
+}
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
         medicineName("");
@@ -289,7 +299,23 @@ public String getUniqueId(String prefix){
         txtCompanyName.setEditable(false);
         txtPricePerUnit.setEditable(false);
         txtTotalPrice.setEditable(false);
-
+        //testing
+        
+        txtUniqueId.setForeground(Color.BLACK);
+    txtName.setForeground(Color.BLACK);
+    txtCompanyName.setForeground(Color.BLACK);
+    txtPricePerUnit.setForeground(Color.BLACK);
+    txtNoOfUnits.setForeground(Color.BLACK);
+    txtTotalPrice.setForeground(Color.BLACK);
+    
+    // Optional: Also set background to ensure contrast
+    txtUniqueId.setBackground(Color.WHITE);
+    txtName.setBackground(Color.WHITE);
+    txtCompanyName.setBackground(Color.WHITE);
+    txtPricePerUnit.setBackground(Color.WHITE);
+    txtNoOfUnits.setBackground(Color.WHITE);
+    txtTotalPrice.setBackground(Color.WHITE);
+      
     }//GEN-LAST:event_formComponentShown
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
@@ -300,22 +326,349 @@ public String getUniqueId(String prefix){
 
     private void medicinesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medicinesTableMouseClicked
         //ERRRRO HAIII-------------------------------------------------------------------------------------------------
-      int index = medicinesTable.getSelectedRow();
-
-    if (index != -1) {
+    int index = medicinesTable.getSelectedRow();
+    if (index == -1) {
+        return;
+    }
+    
+    try {
         TableModel model = medicinesTable.getModel();
-        String selectedValue = model.getValueAt(index, 0).toString();
-
-        // Split the string using " - " with space around dash
+        Object cellValue = model.getValueAt(index, 0);
+        
+        if (cellValue == null) {
+            JOptionPane.showMessageDialog(this, "Invalid table data: null value found.");
+            return;
+        }
+        
+        String selectedValue = cellValue.toString();
         String[] parts = selectedValue.split(" - ");
-        if (parts.length > 0) {
-            String selectedUniqueId = parts[0]; // e.g., "MED001"
-
-            try {
-                Connection con = ConnectionProvider.getCon();
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery("SELECT * FROM medicine WHERE uniqueId = '" + selectedUniqueId + "'");
-
+        if (parts.length == 0 || parts[0].trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Invalid table row format: " + selectedValue);
+            return;
+        }
+        
+        String selectedUniqueId = parts[0].trim();
+        
+        // Use PreparedStatement to prevent SQL injection
+        String query = "SELECT * FROM medicine WHERE uniqueId = ?";
+        try (Connection con = ConnectionProvider.getCon();
+             PreparedStatement pst = con.prepareStatement(query)) {
+            
+            pst.setString(1, selectedUniqueId);
+            
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    // Get the values from database
+                    String dbUniqueId = rs.getString("uniqueId");
+                    String dbName = rs.getString("name");
+                    String dbCompany = rs.getString("companyName");
+                    String dbPrice = rs.getString("price");
+                    
+                    System.out.println("=== DEBUG: Setting text fields ===");
+                    System.out.println("Setting txtUniqueId to: " + dbUniqueId);
+                    System.out.println("Setting txtName to: " + dbName);
+                    System.out.println("Setting txtCompanyName to: " + dbCompany);
+                    System.out.println("Setting txtPricePerUnit to: " + dbPrice);
+                    
+                    // Check if text fields are null
+                    System.out.println("txtUniqueId is null: " + (txtUniqueId == null));
+                    System.out.println("txtName is null: " + (txtName == null));
+                    System.out.println("txtCompanyName is null: " + (txtCompanyName == null));
+                    System.out.println("txtPricePerUnit is null: " + (txtPricePerUnit == null));
+                    
+                    // Check if text fields are editable
+                    System.out.println("txtUniqueId isEditable: " + txtUniqueId.isEditable());
+                    System.out.println("txtName isEditable: " + txtName.isEditable());
+                    System.out.println("txtCompanyName isEditable: " + txtCompanyName.isEditable());
+                    System.out.println("txtPricePerUnit isEditable: " + txtPricePerUnit.isEditable());
+                    
+                    // Check if text fields are enabled
+                    System.out.println("txtUniqueId isEnabled: " + txtUniqueId.isEnabled());
+                    System.out.println("txtName isEnabled: " + txtName.isEnabled());
+                    System.out.println("txtCompanyName isEnabled: " + txtCompanyName.isEnabled());
+                    System.out.println("txtPricePerUnit isEnabled: " + txtPricePerUnit.isEnabled());
+                    
+                    // Try setting the text fields
+                    txtUniqueId.setText(dbUniqueId);
+                    txtName.setText(dbName);
+                    txtCompanyName.setText(dbCompany);
+                    txtPricePerUnit.setText(dbPrice);
+                    txtNoOfUnits.setText("");
+                    txtTotalPrice.setText("");
+                    
+                    // Force UI refresh
+                    txtUniqueId.repaint();
+                    txtName.repaint();
+                    txtCompanyName.repaint();
+                    txtPricePerUnit.repaint();
+                    
+                    // Check what the text fields contain after setting
+                    System.out.println("After setting - txtUniqueId contains: '" + txtUniqueId.getText() + "'");
+                    System.out.println("After setting - txtName contains: '" + txtName.getText() + "'");
+                    System.out.println("After setting - txtCompanyName contains: '" + txtCompanyName.getText() + "'");
+                    System.out.println("After setting - txtPricePerUnit contains: '" + txtPricePerUnit.getText() + "'");
+                    
+                    // Show popup to confirm
+                    JOptionPane.showMessageDialog(this, 
+                        "Values set!\n" +
+                        "ID: " + txtUniqueId.getText() + "\n" +
+                        "Name: " + txtName.getText() + "\n" +
+                        "Company: " + txtCompanyName.getText() + "\n" +
+                        "Price: " + txtPricePerUnit.getText());
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this, "Medicine not found for ID: " + selectedUniqueId);
+                }
+            }
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Database error: " + e.getMessage());
+            e.printStackTrace();
+        }
+        
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error processing selection: " + e.getMessage());
+        e.printStackTrace();
+    }
+        
+        /* int index = medicinesTable.getSelectedRow();
+    if (index == -1) {
+        return;
+    }
+    
+    try {
+        TableModel model = medicinesTable.getModel();
+        Object cellValue = model.getValueAt(index, 0);
+        
+        if (cellValue == null) {
+            JOptionPane.showMessageDialog(this, "Invalid table data: null value found.");
+            return;
+        }
+        
+        String selectedValue = cellValue.toString();
+        String[] parts = selectedValue.split(" - ");
+        if (parts.length == 0 || parts[0].trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Invalid table row format: " + selectedValue);
+            return;
+        }
+        
+        String selectedUniqueId = parts[0].trim();
+        
+        // Use PreparedStatement to prevent SQL injection
+        String query = "SELECT * FROM medicine WHERE uniqueId = ?";
+        try (Connection con = ConnectionProvider.getCon();
+             PreparedStatement pst = con.prepareStatement(query)) {
+            
+            pst.setString(1, selectedUniqueId);
+            
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    // Get the values from database
+                    String dbUniqueId = rs.getString("uniqueId");
+                    String dbName = rs.getString("name");
+                    String dbCompany = rs.getString("companyName");
+                    String dbPrice = rs.getString("price");
+                    
+                    System.out.println("=== DEBUG: Setting text fields ===");
+                    System.out.println("Setting txtUniqueId to: " + dbUniqueId);
+                    System.out.println("Setting txtName to: " + dbName);
+                    System.out.println("Setting txtCompanyName to: " + dbCompany);
+                    System.out.println("Setting txtPricePerUnit to: " + dbPrice);
+                    
+                    // Check if text fields are null
+                    System.out.println("txtUniqueId is null: " + (txtUniqueId == null));
+                    System.out.println("txtName is null: " + (txtName == null));
+                    System.out.println("txtCompanyName is null: " + (txtCompanyName == null));
+                    System.out.println("txtPricePerUnit is null: " + (txtPricePerUnit == null));
+                    
+                    // Check if text fields are editable
+                    System.out.println("txtUniqueId isEditable: " + txtUniqueId.isEditable());
+                    System.out.println("txtName isEditable: " + txtName.isEditable());
+                    System.out.println("txtCompanyName isEditable: " + txtCompanyName.isEditable());
+                    System.out.println("txtPricePerUnit isEditable: " + txtPricePerUnit.isEditable());
+                    
+                    // Check if text fields are enabled
+                    System.out.println("txtUniqueId isEnabled: " + txtUniqueId.isEnabled());
+                    System.out.println("txtName isEnabled: " + txtName.isEnabled());
+                    System.out.println("txtCompanyName isEnabled: " + txtCompanyName.isEnabled());
+                    System.out.println("txtPricePerUnit isEnabled: " + txtPricePerUnit.isEnabled());
+                    
+                    // Try setting the text fields
+                    txtUniqueId.setText(dbUniqueId);
+                    txtName.setText(dbName);
+                    txtCompanyName.setText(dbCompany);
+                    txtPricePerUnit.setText(dbPrice);
+                    txtNoOfUnits.setText("");
+                    txtTotalPrice.setText("");
+                    
+                    // Force UI refresh
+                    txtUniqueId.repaint();
+                    txtName.repaint();
+                    txtCompanyName.repaint();
+                    txtPricePerUnit.repaint();
+                    
+                    // Check what the text fields contain after setting
+                    System.out.println("After setting - txtUniqueId contains: '" + txtUniqueId.getText() + "'");
+                    System.out.println("After setting - txtName contains: '" + txtName.getText() + "'");
+                    System.out.println("After setting - txtCompanyName contains: '" + txtCompanyName.getText() + "'");
+                    System.out.println("After setting - txtPricePerUnit contains: '" + txtPricePerUnit.getText() + "'");
+                    
+                    // Show popup to confirm
+                    JOptionPane.showMessageDialog(this, 
+                        "Values set!\n" +
+                        "ID: " + txtUniqueId.getText() + "\n" +
+                        "Name: " + txtName.getText() + "\n" +
+                        "Company: " + txtCompanyName.getText() + "\n" +
+                        "Price: " + txtPricePerUnit.getText());
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this, "Medicine not found for ID: " + selectedUniqueId);
+                }
+            }
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Database error: " + e.getMessage());
+            e.printStackTrace();
+        }
+        
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error processing selection: " + e.getMessage());
+        e.printStackTrace();
+    }
+        
+        /*JOptionPane.showMessageDialog(this, "Table clicked! Method is working.");
+    System.out.println("=== medicinesTableMouseClicked called ===");
+    
+    int index = medicinesTable.getSelectedRow();
+    System.out.println("Selected row index: " + index);
+    
+    if (index == -1) {
+        System.out.println("No row selected, returning...");
+        JOptionPane.showMessageDialog(this, "No row selected!");
+        return;
+    }
+    
+    try {
+        TableModel model = medicinesTable.getModel();
+        System.out.println("Table has " + model.getRowCount() + " rows");
+        
+        Object cellValue = model.getValueAt(index, 0);
+        System.out.println("Cell value: " + cellValue);
+        System.out.println("Cell value type: " + (cellValue != null ? cellValue.getClass() : "null"));
+        
+        if (cellValue == null) {
+            System.out.println("Cell value is null!");
+            JOptionPane.showMessageDialog(this, "Invalid table data: null value found.");
+            return;
+        }
+        
+        String selectedValue = cellValue.toString();
+        System.out.println("Selected value as string: '" + selectedValue + "'");
+        
+        String[] parts = selectedValue.split(" - ");
+        System.out.println("Split parts: " + java.util.Arrays.toString(parts));
+        
+        if (parts.length == 0 || parts[0].trim().isEmpty()) {
+            System.out.println("Invalid parts after split!");
+            JOptionPane.showMessageDialog(this, "Invalid table row format: " + selectedValue);
+            return;
+        }
+        
+        String selectedUniqueId = parts[0].trim();
+        System.out.println("Extracted unique ID: '" + selectedUniqueId + "'");
+        
+        // Show extracted ID in popup for verification
+        JOptionPane.showMessageDialog(this, "Extracted ID: " + selectedUniqueId);
+        
+        // Use PreparedStatement to prevent SQL injection
+        String query = "SELECT * FROM medicine WHERE uniqueId = ?";
+        System.out.println("Executing query with ID: " + selectedUniqueId);
+        
+        try (Connection con = ConnectionProvider.getCon();
+             PreparedStatement pst = con.prepareStatement(query)) {
+            
+            if (con == null) {
+                System.out.println("Database connection is NULL!");
+                JOptionPane.showMessageDialog(this, "Database connection failed!");
+                return;
+            }
+            System.out.println("Database connection successful");
+            
+            pst.setString(1, selectedUniqueId);
+            
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    System.out.println("Medicine found in database!");
+                    
+                    String dbUniqueId = rs.getString("uniqueId");
+                    String dbName = rs.getString("name");
+                    String dbCompany = rs.getString("companyName");
+                    String dbPrice = rs.getString("price");
+                    
+                    System.out.println("DB Data - ID: " + dbUniqueId + ", Name: " + dbName);
+                    
+                    txtUniqueId.setText(dbUniqueId);
+                    txtName.setText(dbName);
+                    txtCompanyName.setText(dbCompany);
+                    txtPricePerUnit.setText(dbPrice);
+                    txtNoOfUnits.setText("");
+                    txtTotalPrice.setText("");
+                    
+                    System.out.println("Text fields populated successfully!");
+                    JOptionPane.showMessageDialog(this, "Medicine loaded: " + dbName);
+                    
+                } else {
+                    System.out.println("No medicine found for ID: " + selectedUniqueId);
+                    JOptionPane.showMessageDialog(this, "Medicine not found for ID: " + selectedUniqueId);
+                }
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("SQL Exception: " + e.getMessage());
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Database error: " + e.getMessage());
+        }
+        
+    } catch (Exception e) {
+        System.out.println("General Exception: " + e.getMessage());
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error processing selection: " + e.getMessage());
+    }
+    
+    System.out.println("=== Method completed ===");
+        
+        /* earliar code
+    int index = medicinesTable.getSelectedRow();
+    if (index == -1) {
+        return;
+    }
+    
+    try {
+        TableModel model = medicinesTable.getModel();
+        Object cellValue = model.getValueAt(index, 0);
+        
+        if (cellValue == null) {
+            JOptionPane.showMessageDialog(this, "Invalid table data: null value found.");
+            return;
+        }
+        
+        String selectedValue = cellValue.toString();
+        String[] parts = selectedValue.split(" - ");
+        if (parts.length == 0 || parts[0].trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Invalid table row format: " + selectedValue);
+            return;
+        }
+        
+        String selectedUniqueId = parts[0].trim();
+        
+        // Use PreparedStatement to prevent SQL injection
+        String query = "SELECT * FROM medicine WHERE uniqueId = ?";
+        try (Connection con = ConnectionProvider.getCon();
+             PreparedStatement pst = con.prepareStatement(query)) {
+            
+            pst.setString(1, selectedUniqueId);
+            
+            try (ResultSet rs = pst.executeQuery()) {
                 if (rs.next()) {
                     txtUniqueId.setText(rs.getString("uniqueId"));
                     txtName.setText(rs.getString("name"));
@@ -324,17 +677,20 @@ public String getUniqueId(String prefix){
                     txtNoOfUnits.setText("");
                     txtTotalPrice.setText("");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Medicine not found for ID: " + selectedUniqueId);
+                    JOptionPane.showMessageDialog(this, "Medicine not found for ID: " + selectedUniqueId);
                 }
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error fetching medicine data:\n" + e);
-                e.printStackTrace();
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Invalid table row format.");
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Database error: " + e.getMessage());
+            e.printStackTrace();
         }
+        
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error processing selection: " + e.getMessage());
+        e.printStackTrace();
     }
+
         // Get selected row index
        /* int index = medicinesTable.getSelectedRow();
         TableModel model = medicinesTable.getModel();
@@ -367,7 +723,6 @@ public String getUniqueId(String prefix){
         */
 
     }//GEN-LAST:event_medicinesTableMouseClicked
-
     /**
      * @param args the command line arguments
      */
