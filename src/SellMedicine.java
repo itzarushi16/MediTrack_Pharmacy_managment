@@ -91,7 +91,7 @@ public String getUniqueId(String prefix){
         txtNoOfUnits = new javax.swing.JTextField();
         txtTotalPrice = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        cartTable = new javax.swing.JTable();
         btnAddToCart = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -223,7 +223,7 @@ public String getUniqueId(String prefix){
         txtTotalPrice.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(txtTotalPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(894, 357, 275, -1));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        cartTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -234,7 +234,7 @@ public String getUniqueId(String prefix){
                 "Medicine ID", "Name", "Company Name", "Price Per Unit", "No. of Units", "Total Price"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(cartTable);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 632, 211));
 
@@ -781,6 +781,19 @@ public String getUniqueId(String prefix){
             catch(Exception e) {
     JOptionPane.showMessageDialog(null, e);
 }
+            
+            if(checkStock == 1) {
+    DefaultTableModel dtm = (DefaultTableModel) cartTable.getModel();
+    if(cartTable.getRowCount() != 0) {
+        for(int i = 0; i < cartTable.getRowCount(); i++) {
+            if(Integer.parseInt(dtm.getValueAt(i, 0).toString()) == Integer.parseInt(uniqueId)) {
+                checkMedicineAlreadyExistInCart = 1;
+                JOptionPane.showMessageDialog(null, "Medicine already exist in cart");
+            }
+        }
+    }
+}
+
         }
     }//GEN-LAST:event_btnAddToCartActionPerformed
     /**
@@ -820,6 +833,7 @@ public String getUniqueId(String prefix){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddToCart;
+    private javax.swing.JTable cartTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -836,7 +850,6 @@ public String getUniqueId(String prefix){
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable medicinesTable;
     private javax.swing.JTextField txtCompanyName;
     private javax.swing.JTextField txtName;
