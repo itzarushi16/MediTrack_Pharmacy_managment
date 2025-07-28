@@ -740,6 +740,9 @@ public String getUniqueId(String prefix){
     int totalPrice = Integer.parseInt(noOfUnits) * Integer.parseInt(price);
     txtTotalPrice.setText(String.valueOf(totalPrice));
 }
+        else {
+    txtTotalPrice.setText("");
+}
 
     }//GEN-LAST:event_txtNoOfUnitsKeyReleased
     /**
