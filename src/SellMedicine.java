@@ -212,6 +212,11 @@ public String getUniqueId(String prefix){
 
         txtNoOfUnits.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtNoOfUnits.setForeground(new java.awt.Color(255, 255, 255));
+        txtNoOfUnits.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNoOfUnitsKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtNoOfUnits, new org.netbeans.lib.awtextra.AbsoluteConstraints(894, 254, 275, -1));
 
         txtTotalPrice.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -723,6 +728,12 @@ public String getUniqueId(String prefix){
         */
 
     }//GEN-LAST:event_medicinesTableMouseClicked
+
+    private void txtNoOfUnitsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNoOfUnitsKeyReleased
+        // TODO add your handling code here:
+        String noOfUnits = txtNoOfUnits.getText();
+
+    }//GEN-LAST:event_txtNoOfUnitsKeyReleased
     /**
      * @param args the command line arguments
      */
