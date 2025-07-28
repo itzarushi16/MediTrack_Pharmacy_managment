@@ -737,6 +737,9 @@ public String getUniqueId(String prefix){
     if(!noOfUnits.matches(numberPattern)) {
         JOptionPane.showMessageDialog(null, "Number of Units field is invalid.");
     }
+    int totalPrice = Integer.parseInt(noOfUnits) * Integer.parseInt(price);
+    txtTotalPrice.setText(String.valueOf(totalPrice));
+}
 
     }//GEN-LAST:event_txtNoOfUnitsKeyReleased
     /**
