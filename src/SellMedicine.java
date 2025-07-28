@@ -763,12 +763,12 @@ public String getUniqueId(String prefix){
             String totalPrice = txtTotalPrice.getText();
             int checkStock = 0;
             int checkMedicineAlreadyExistInCart = 0;
-            
+
             try {
-    Connection con = ConnectionProvider.getCon();
-    Statement st = con.createStatement();
-    ResultSet rs = st.executeQuery("select * from medicine where uniqueId='" + uniqueId + "'");
-    
+                Connection con = ConnectionProvider.getCon();
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery("select * from medicine where uniqueId='" + uniqueId + "'");
+
                 while (rs.next()) {
                     if (rs.getInt("quantity") >= Integer.parseInt(noOfUnits)) {
                         checkStock = 1;
@@ -785,10 +785,13 @@ public String getUniqueId(String prefix){
                 DefaultTableModel dtm = (DefaultTableModel) cartTable.getModel();
                 if (cartTable.getRowCount() != 0) {
                     for (int i = 0; i < cartTable.getRowCount(); i++) {
-                        if (Integer.parseInt(dtm.getValueAt(i, 0).toString()) == Integer.parseInt(uniqueId)) {
+                        Object value = dtm.getValueAt(i, 0);
+                        if (value != null && Integer.parseInt(value.toString()) == Integer.parseInt(uniqueId)) {
                             checkMedicineAlreadyExistInCart = 1;
                             JOptionPane.showMessageDialog(null, "Medicine already exist in cart");
                         }
+
+                        
                     }
                 }
                 if (checkMedicineAlreadyExistInCart == 0) {
@@ -797,12 +800,15 @@ public String getUniqueId(String prefix){
                     lblFinalTotalPrice.setText(String.valueOf(finalTotalPrice));
                     JOptionPane.showMessageDialog(null, "Added Successfully");
                 }
-                  clearMedicineFields();
+                clearMedicineFields();
             }
 
         }
         
-        /
+        else {
+    JOptionPane.showMessageDialog(null, "No Of Units and Medicine ID field is required");
+}
+
     }//GEN-LAST:event_btnAddToCartActionPerformed
     /**
      * @param args the command line arguments
