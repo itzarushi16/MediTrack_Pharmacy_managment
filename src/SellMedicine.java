@@ -732,6 +732,11 @@ public String getUniqueId(String prefix){
     private void txtNoOfUnitsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNoOfUnitsKeyReleased
         // TODO add your handling code here:
         String noOfUnits = txtNoOfUnits.getText();
+        if(!noOfUnits.equals("")) {
+    String price = txtPricePerUnit.getText();
+    if(!noOfUnits.matches(numberPattern)) {
+        JOptionPane.showMessageDialog(null, "Number of Units field is invalid.");
+    }
 
     }//GEN-LAST:event_txtNoOfUnitsKeyReleased
     /**
