@@ -94,7 +94,7 @@ public String getUniqueId(String prefix){
         cartTable = new javax.swing.JTable();
         btnAddToCart = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        lblFinalTotalPrice = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
 
@@ -253,10 +253,10 @@ public String getUniqueId(String prefix){
         jLabel9.setText("RS :");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 680, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("00");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 680, -1, -1));
+        lblFinalTotalPrice.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblFinalTotalPrice.setForeground(new java.awt.Color(255, 255, 255));
+        lblFinalTotalPrice.setText("00");
+        getContentPane().add(lblFinalTotalPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 680, -1, -1));
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/generate bill & print.png"))); // NOI18N
@@ -769,32 +769,40 @@ public String getUniqueId(String prefix){
     Statement st = con.createStatement();
     ResultSet rs = st.executeQuery("select * from medicine where uniqueId='" + uniqueId + "'");
     
-    while(rs.next()) {
-        if(rs.getInt("quantity") >= Integer.parseInt(noOfUnits)) {
-            checkStock = 1;
-        } else {
-            JOptionPane.showMessageDialog(null, 
-                "Medicine is out of stock. Only " + rs.getInt("quantity") + " Left");
-        }
-    }
-        }
-            catch(Exception e) {
-    JOptionPane.showMessageDialog(null, e);
-}
-            
-            if(checkStock == 1) {
-    DefaultTableModel dtm = (DefaultTableModel) cartTable.getModel();
-    if(cartTable.getRowCount() != 0) {
-        for(int i = 0; i < cartTable.getRowCount(); i++) {
-            if(Integer.parseInt(dtm.getValueAt(i, 0).toString()) == Integer.parseInt(uniqueId)) {
-                checkMedicineAlreadyExistInCart = 1;
-                JOptionPane.showMessageDialog(null, "Medicine already exist in cart");
+                while (rs.next()) {
+                    if (rs.getInt("quantity") >= Integer.parseInt(noOfUnits)) {
+                        checkStock = 1;
+                    } else {
+                        JOptionPane.showMessageDialog(null,
+                                "Medicine is out of stock. Only " + rs.getInt("quantity") + " Left");
+                    }
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
             }
-        }
-    }
-}
+
+            if (checkStock == 1) {
+                DefaultTableModel dtm = (DefaultTableModel) cartTable.getModel();
+                if (cartTable.getRowCount() != 0) {
+                    for (int i = 0; i < cartTable.getRowCount(); i++) {
+                        if (Integer.parseInt(dtm.getValueAt(i, 0).toString()) == Integer.parseInt(uniqueId)) {
+                            checkMedicineAlreadyExistInCart = 1;
+                            JOptionPane.showMessageDialog(null, "Medicine already exist in cart");
+                        }
+                    }
+                }
+                if (checkMedicineAlreadyExistInCart == 0) {
+                    dtm.addRow(new Object[]{uniqueId, name, companyName, pricePerUnit, noOfUnits, totalPrice});
+                    finalTotalPrice = finalTotalPrice + Integer.parseInt(totalPrice);
+                    lblFinalTotalPrice.setText(String.valueOf(finalTotalPrice));
+                    JOptionPane.showMessageDialog(null, "Added Successfully");
+                }
+                  clearMedicineFields();
+            }
 
         }
+        
+        /
     }//GEN-LAST:event_btnAddToCartActionPerformed
     /**
      * @param args the command line arguments
@@ -837,7 +845,6 @@ public String getUniqueId(String prefix){
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -850,6 +857,7 @@ public String getUniqueId(String prefix){
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblFinalTotalPrice;
     private javax.swing.JTable medicinesTable;
     private javax.swing.JTextField txtCompanyName;
     private javax.swing.JTextField txtName;
