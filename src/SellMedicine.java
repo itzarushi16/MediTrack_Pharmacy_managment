@@ -763,6 +763,24 @@ public String getUniqueId(String prefix){
             String totalPrice = txtTotalPrice.getText();
             int checkStock = 0;
             int checkMedicineAlreadyExistInCart = 0;
+            
+            try {
+    Connection con = ConnectionProvider.getCon();
+    Statement st = con.createStatement();
+    ResultSet rs = st.executeQuery("select * from medicine where uniqueId='" + uniqueId + "'");
+    
+    while(rs.next()) {
+        if(rs.getInt("quantity") >= Integer.parseInt(noOfUnits)) {
+            checkStock = 1;
+        } else {
+            JOptionPane.showMessageDialog(null, 
+                "Medicine is out of stock. Only " + rs.getInt("quantity") + " Left");
+        }
+    }
+        }
+            catch(Exception e) {
+    JOptionPane.showMessageDialog(null, e);
+}
         }
     }//GEN-LAST:event_btnAddToCartActionPerformed
     /**
