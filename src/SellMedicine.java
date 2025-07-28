@@ -754,7 +754,16 @@ public String getUniqueId(String prefix){
     private void btnAddToCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToCartActionPerformed
         // TODO add your handling code here:
         String noOfUnits = txtNoOfUnits.getText();
-String uniqueId = txtUniqueId.getText();
+        String uniqueId = txtUniqueId.getText();
+
+        if (!noOfUnits.equals("") && !uniqueId.equals("")) {
+            String name = txtName.getText();
+            String companyName = txtCompanyName.getText();
+            String pricePerUnit = txtPricePerUnit.getText();
+            String totalPrice = txtTotalPrice.getText();
+            int checkStock = 0;
+            int checkMedicineAlreadyExistInCart = 0;
+        }
     }//GEN-LAST:event_btnAddToCartActionPerformed
     /**
      * @param args the command line arguments
