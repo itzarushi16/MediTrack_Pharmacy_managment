@@ -7,6 +7,8 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import javax.swing.table.TableModel;
 
 /**
@@ -298,15 +300,22 @@ public String getUniqueId(String prefix){
             if (cartTable.getRowCount() != 0) {
                 for (int i = 0; i < cartTable.getRowCount(); i++) {
                     try {
-                        
-                         Connection con = ConnectionProvider.getCon();
-    Statement st = con.createStatement();
-                        // TODO: Add your code here
+
+                        Connection con = ConnectionProvider.getCon();
+                        Statement st = con.createStatement();
+                        st.executeUpdate("update medicine set quantity = quantity - "+ Integer.parseInt(dtm.getValueAt(i, 4).toString()) + " where uniqueId = " + Integer.parseInt(dtm.getValueAt(i, 0).toString()));
+                        //st.executeUpdate("UPDATE medicine SET quantity = quantity - " + Integer.parseInt(dtm.getValueAt(i, 4).toString()) + " WHERE uniqueId = " + Integer.parseInt(dtm.getValueAt(i, 0).toString()));
+
+// TODO: Add your code here
                     } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null,e);
+                        JOptionPane.showMessageDialog(null, e);
                     }
                 }
             }
+            
+           try {
+    SimpleDateFormat myFormat = new SimpleDateFormat("dd-MM-yyyy");
+    Calendar cal = Calendar.getInstance(); 
         }
 
     }//GEN-LAST:event_jButton3ActionPerformed
