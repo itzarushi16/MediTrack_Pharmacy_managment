@@ -320,6 +320,12 @@ public String getUniqueId(String prefix){
     PreparedStatement ps = con.prepareStatement(
         "INSERT INTO bill(billId, billDate, totalPaid, generatedBy) VALUES (?, ?, ?, ?)"
     );
+    
+    ps.setString(1, billId);
+    ps.setString(2, myFormat.format(cal.getTime()));
+    ps.setInt(3, finalTotalPrice);
+    ps.setString(4, username);
+    
     } catch (Exception e) {
     JOptionPane.showMessageDialog(null, e);
 }
