@@ -819,14 +819,14 @@ public String getUniqueId(String prefix){
     private void cartTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartTableMouseClicked
         // TODO add your handling code here:
         int index = cartTable.getSelectedRow();
-int a = JOptionPane.showConfirmDialog(null, "Do you want to remove this Medicine", "Select", JOptionPane.YES_NO_OPTION);
-if (a == 0) {
-    TableModel model = cartTable.getModel();
-    String total = model.getValueAt(index, 5).toString();
-    finalTotalPrice = finalTotalPrice - Integer.parseInt(total);
-    lblFinalTotalPrice.setText(String.valueOf(finalTotalPrice));
-    ((DefaultTableModel) cartTable.getModel()).removeRow(index);
-}
+        int a = JOptionPane.showConfirmDialog(null, "Do you want to remove this Medicine", "Select", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            TableModel model = cartTable.getModel();
+            String total = model.getValueAt(index, 5).toString();
+            finalTotalPrice = finalTotalPrice - Integer.parseInt(total);
+            lblFinalTotalPrice.setText(String.valueOf(finalTotalPrice));
+            ((DefaultTableModel) cartTable.getModel()).removeRow(index);
+        }
     }//GEN-LAST:event_cartTableMouseClicked
     /**
      * @param args the command line arguments
