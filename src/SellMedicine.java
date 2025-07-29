@@ -234,6 +234,11 @@ public String getUniqueId(String prefix){
                 "Medicine ID", "Name", "Company Name", "Price Per Unit", "No. of Units", "Total Price"
             }
         ));
+        cartTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cartTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(cartTable);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 632, 211));
@@ -810,6 +815,13 @@ public String getUniqueId(String prefix){
 }
 
     }//GEN-LAST:event_btnAddToCartActionPerformed
+
+    private void cartTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartTableMouseClicked
+        // TODO add your handling code here:
+        int index = cartTable.getSelectedRow();
+int a = JOptionPane.showConfirmDialog(null, "Do you want to remove this Medicine", "Select", JOptionPane.YES_NO_OPTION);
+
+    }//GEN-LAST:event_cartTableMouseClicked
     /**
      * @param args the command line arguments
      */
