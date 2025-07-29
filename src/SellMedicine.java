@@ -298,6 +298,9 @@ public String getUniqueId(String prefix){
             if (cartTable.getRowCount() != 0) {
                 for (int i = 0; i < cartTable.getRowCount(); i++) {
                     try {
+                        
+                         Connection con = ConnectionProvider.getCon();
+    Statement st = con.createStatement();
                         // TODO: Add your code here
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null,e);
