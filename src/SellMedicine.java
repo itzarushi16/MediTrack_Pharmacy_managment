@@ -820,7 +820,10 @@ public String getUniqueId(String prefix){
         // TODO add your handling code here:
         int index = cartTable.getSelectedRow();
 int a = JOptionPane.showConfirmDialog(null, "Do you want to remove this Medicine", "Select", JOptionPane.YES_NO_OPTION);
-
+if (a == 0) {
+    TableModel model = cartTable.getModel();
+    String total = model.getValueAt(index, 5).toString();
+}
     }//GEN-LAST:event_cartTableMouseClicked
     /**
      * @param args the command line arguments
