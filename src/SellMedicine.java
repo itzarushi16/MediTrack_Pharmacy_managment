@@ -293,6 +293,10 @@ public String getUniqueId(String prefix){
         // TODO add your handling code here:
         if (finalTotalPrice != 0) {
     billId = getUniqueId("Bill-");
+    
+    DefaultTableModel dtm = (DefaultTableModel) cartTable.getModel();
+    if (cartTable.getRowCount() != 0) {
+        for (int i = 0; i < cartTable.getRowCount(); i++) {
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
