@@ -823,6 +823,9 @@ int a = JOptionPane.showConfirmDialog(null, "Do you want to remove this Medicine
 if (a == 0) {
     TableModel model = cartTable.getModel();
     String total = model.getValueAt(index, 5).toString();
+    finalTotalPrice = finalTotalPrice - Integer.parseInt(total);
+    lblFinalTotalPrice.setText(String.valueOf(finalTotalPrice));
+    ((DefaultTableModel) cartTable.getModel()).removeRow(index);
 }
     }//GEN-LAST:event_cartTableMouseClicked
     /**
