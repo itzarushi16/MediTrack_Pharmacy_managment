@@ -300,7 +300,7 @@ public String getUniqueId(String prefix){
                     try {
                         // TODO: Add your code here
                     } catch (Exception e) {
-                        // Handle the exception if needed
+                        JOptionPane.showMessageDialog(null,e);
                     }
                 }
             }
