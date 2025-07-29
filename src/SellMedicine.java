@@ -291,6 +291,9 @@ public String getUniqueId(String prefix){
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        if (finalTotalPrice != 0) {
+    billId = getUniqueId("Bill-");
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
