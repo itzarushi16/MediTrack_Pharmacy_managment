@@ -297,6 +297,14 @@ public String getUniqueId(String prefix){
     DefaultTableModel dtm = (DefaultTableModel) cartTable.getModel();
     if (cartTable.getRowCount() != 0) {
         for (int i = 0; i < cartTable.getRowCount(); i++) {
+            try {
+                // TODO: Add your code here
+            } catch (Exception e) {
+                // Handle the exception if needed
+            }
+        }
+    }
+        }
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
