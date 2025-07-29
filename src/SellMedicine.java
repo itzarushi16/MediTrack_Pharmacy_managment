@@ -303,7 +303,7 @@ public String getUniqueId(String prefix){
 
                         Connection con = ConnectionProvider.getCon();
                         Statement st = con.createStatement();
-                        st.executeUpdate("update medicine set quantity = quantity - "+ Integer.parseInt(dtm.getValueAt(i, 4).toString()) + " where uniqueId = " + Integer.parseInt(dtm.getValueAt(i, 0).toString()));
+                        st.executeUpdate("update medicine set quantity = quantity - " + Integer.parseInt(dtm.getValueAt(i, 4).toString()) + " where uniqueId = " + Integer.parseInt(dtm.getValueAt(i, 0).toString()));
                         //st.executeUpdate("UPDATE medicine SET quantity = quantity - " + Integer.parseInt(dtm.getValueAt(i, 4).toString()) + " WHERE uniqueId = " + Integer.parseInt(dtm.getValueAt(i, 0).toString()));
 
 // TODO: Add your code here
@@ -312,23 +312,25 @@ public String getUniqueId(String prefix){
                     }
                 }
             }
-            
-           try {
-    SimpleDateFormat myFormat = new SimpleDateFormat("dd-MM-yyyy");
-    Calendar cal = Calendar.getInstance(); 
-    Connection con = ConnectionProvider.getCon();
-    PreparedStatement ps = con.prepareStatement(
-        "INSERT INTO bill(billId, billDate, totalPaid, generatedBy) VALUES (?, ?, ?, ?)"
-    );
-    
-    ps.setString(1, billId);
-    ps.setString(2, myFormat.format(cal.getTime()));
-    ps.setInt(3, finalTotalPrice);
-    ps.setString(4, username);
-    
-    } catch (Exception e) {
-    JOptionPane.showMessageDialog(null, e);
-}
+
+            try {
+                SimpleDateFormat myFormat = new SimpleDateFormat("dd-MM-yyyy");
+                Calendar cal = Calendar.getInstance();
+                Connection con = ConnectionProvider.getCon();
+                PreparedStatement ps = con.prepareStatement(
+                        "INSERT INTO bill(billId, billDate, totalPaid, generatedBy) VALUES (?, ?, ?, ?)"
+                );
+
+                ps.setString(1, billId);
+                ps.setString(2, myFormat.format(cal.getTime()));
+                ps.setInt(3, finalTotalPrice);
+                ps.setString(4, username);
+
+                ps.executeUpdate();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
         }
 
     }//GEN-LAST:event_jButton3ActionPerformed
