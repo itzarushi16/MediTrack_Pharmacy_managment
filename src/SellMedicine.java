@@ -320,6 +320,9 @@ public String getUniqueId(String prefix){
     PreparedStatement ps = con.prepareStatement(
         "INSERT INTO bill(billId, billDate, totalPaid, generatedBy) VALUES (?, ?, ?, ?)"
     );
+    } catch (Exception e) {
+    JOptionPane.showMessageDialog(null, e);
+}
         }
 
     }//GEN-LAST:event_jButton3ActionPerformed
