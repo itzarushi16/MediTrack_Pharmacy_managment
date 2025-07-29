@@ -292,20 +292,20 @@ public String getUniqueId(String prefix){
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         if (finalTotalPrice != 0) {
-    billId = getUniqueId("Bill-");
-    
-    DefaultTableModel dtm = (DefaultTableModel) cartTable.getModel();
-    if (cartTable.getRowCount() != 0) {
-        for (int i = 0; i < cartTable.getRowCount(); i++) {
-            try {
-                // TODO: Add your code here
-            } catch (Exception e) {
-                // Handle the exception if needed
+            billId = getUniqueId("Bill-");
+
+            DefaultTableModel dtm = (DefaultTableModel) cartTable.getModel();
+            if (cartTable.getRowCount() != 0) {
+                for (int i = 0; i < cartTable.getRowCount(); i++) {
+                    try {
+                        // TODO: Add your code here
+                    } catch (Exception e) {
+                        // Handle the exception if needed
+                    }
+                }
             }
         }
-    }
-        }
-        
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
