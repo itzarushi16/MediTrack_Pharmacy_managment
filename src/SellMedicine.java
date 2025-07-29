@@ -316,6 +316,10 @@ public String getUniqueId(String prefix){
            try {
     SimpleDateFormat myFormat = new SimpleDateFormat("dd-MM-yyyy");
     Calendar cal = Calendar.getInstance(); 
+    Connection con = ConnectionProvider.getCon();
+    PreparedStatement ps = con.prepareStatement(
+        "INSERT INTO bill(billId, billDate, totalPaid, generatedBy) VALUES (?, ?, ?, ?)"
+    );
         }
 
     }//GEN-LAST:event_jButton3ActionPerformed
