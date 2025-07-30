@@ -341,25 +341,21 @@ public String getUniqueId(String prefix){
 
                 PdfWriter.getInstance(doc, new FileOutputStream(PharmacyUtils.billPath + "/" + billId + ".pdf"));
                 doc.open();
-                 doc.add(pharmacyName);
-    Paragraph starline = new Paragraph("***************************************************************");
-    doc.add(starline);
-    Paragraph details = new Paragraph("\nBill ID: " + billId + "\nDate: " + new Date() + "\nTotal Paid: " + finalTotalPrice);
-    doc.add(details);
-    doc.add(starline);
-                
-                
-                
+                Paragraph pharmacyName = new Paragraph("                               Pharmacy Management System\n");
+                doc.add(pharmacyName);
+
+                Paragraph starline = new Paragraph("***************************************************************");
+                doc.add(starline);
+                Paragraph details = new Paragraph("\tBill ID: " + billId + "\nDate: Paragraph" + new Date() + "\nTotal Paid: " + finalTotalPrice);
+                doc.add(details);
+                doc.add(starline);
+
+
                 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
-
         }
-
-       
-        
-
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
