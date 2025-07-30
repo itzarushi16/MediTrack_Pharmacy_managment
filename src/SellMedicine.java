@@ -14,7 +14,7 @@ import java.util.Calendar;
 import javax.swing.table.TableModel;
 import dao.PharmacyUtils;
 import java.io.FileOutputStream;
-
+import java.util.Date;
 /**
  *
  * @author thear
@@ -346,8 +346,9 @@ public String getUniqueId(String prefix){
 
                 Paragraph starline = new Paragraph("***************************************************************");
                 doc.add(starline);
-                Paragraph details = new Paragraph("\tBill ID: " + billId + "\nDate: Paragraph" + new Date() + "\nTotal Paid: " + finalTotalPrice);
-                doc.add(details);
+            Paragraph details = new Paragraph("\tBill ID: " + billId + "\nDate: Paragraph" + new Date() + "\nTotal Paid: " + finalTotalPrice);
+          //  Paragraph details = new Paragraph("\tBill ID: " + billId + "\nDate: Paragraph" + new Date() + "\nTotal Paid: " + finalTotalPrice);
+               doc.add(details);
                 doc.add(starline);
 
 
