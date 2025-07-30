@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+import com.itextpdf.text.pdf.PdfWriter;
 import dao.ConnectionProvider;
 import java.awt.Color;
 import javax.swing.JOptionPane;
@@ -11,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.table.TableModel;
 import dao.PharmacyUtils;
+import java.io.FileOutputStream;
 
 /**
  *
@@ -334,14 +336,16 @@ public String getUniqueId(String prefix){
             }
              //Creating bill 
              com.itextpdf.text.Document doc = new com.itextpdf.text.Document();
-try {
-    } catch (Exception e) {
-    JOptionPane.showMessageDialog(null, e);
-}
+            try {
 
-            
+                PdfWriter.getInstance(doc, new FileOutputStream(PharmacyUtils.billPath + "/" + billId + ".pdf"));
+                doc.open();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+
         }
-        
+
        
         
 
