@@ -334,6 +334,10 @@ public String getUniqueId(String prefix){
             }
              //Creating bill 
              com.itextpdf.text.Document doc = new com.itextpdf.text.Document();
+try {
+    } catch (Exception e) {
+    JOptionPane.showMessageDialog(null, e);
+}
 
             
         }
