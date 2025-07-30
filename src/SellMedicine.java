@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import dao.ConnectionProvider;
 import java.awt.Color;
@@ -356,6 +357,9 @@ public String getUniqueId(String prefix){
 tbl.addCell("Medicine ID");
 tbl.addCell("Name");
 tbl.addCell("Company Name");
+tbl.addCell("Price Per Unit");
+tbl.addCell("No Of Units");
+tbl.addCell("Sub Total Price");
 
                 
             } catch (Exception e) {
