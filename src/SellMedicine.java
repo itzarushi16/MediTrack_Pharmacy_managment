@@ -370,7 +370,10 @@ public String getUniqueId(String prefix){
     tbl.addCell(a);
     tbl.addCell(b);
     tbl.addCell(c);
-}
+    tbl.addCell(d);
+    tbl.addCell(e);
+    tbl.addCell(f);
+                }
                 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
