@@ -366,6 +366,10 @@ public String getUniqueId(String prefix){
                      String d = cartTable.getValueAt(i, 3).toString();
     String e = cartTable.getValueAt(i, 4).toString();
     String f = cartTable.getValueAt(i, 5).toString();
+    
+    tbl.addCell(a);
+    tbl.addCell(b);
+    tbl.addCell(c);
 }
                 
             } catch (Exception e) {
