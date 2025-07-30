@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import dao.ConnectionProvider;
 import java.awt.Color;
@@ -340,6 +341,13 @@ public String getUniqueId(String prefix){
 
                 PdfWriter.getInstance(doc, new FileOutputStream(PharmacyUtils.billPath + "/" + billId + ".pdf"));
                 doc.open();
+                 doc.add(pharmacyName);
+    Paragraph starline = new Paragraph("***************************************************************");
+    doc.add(starline);
+                
+                
+                
+                
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
