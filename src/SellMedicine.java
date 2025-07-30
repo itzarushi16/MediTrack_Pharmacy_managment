@@ -344,6 +344,9 @@ public String getUniqueId(String prefix){
                  doc.add(pharmacyName);
     Paragraph starline = new Paragraph("***************************************************************");
     doc.add(starline);
+    Paragraph details = new Paragraph("\nBill ID: " + billId + "\nDate: " + new Date() + "\nTotal Paid: " + finalTotalPrice);
+    doc.add(details);
+    doc.add(starline);
                 
                 
                 
