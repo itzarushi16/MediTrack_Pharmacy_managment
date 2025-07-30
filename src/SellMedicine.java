@@ -363,6 +363,10 @@ public String getUniqueId(String prefix){
                     String a = cartTable.getValueAt(i, 0).toString();
                     String b = cartTable.getValueAt(i, 1).toString();
                     String c = cartTable.getValueAt(i, 2).toString();
+                     String d = cartTable.getValueAt(i, 3).toString();
+    String e = cartTable.getValueAt(i, 4).toString();
+    String f = cartTable.getValueAt(i, 5).toString();
+}
                 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
