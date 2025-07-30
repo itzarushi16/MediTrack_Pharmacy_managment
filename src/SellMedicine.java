@@ -351,6 +351,11 @@ public String getUniqueId(String prefix){
                doc.add(details);
                 doc.add(starline);
 
+                
+                PdfPTable tbl = new PdfPTable(6);
+tbl.addCell("Medicine ID");
+tbl.addCell("Name");
+tbl.addCell("Company Name");
 
                 
             } catch (Exception e) {
