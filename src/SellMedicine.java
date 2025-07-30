@@ -374,17 +374,25 @@ public String getUniqueId(String prefix){
                     tbl.addCell(e);
                     tbl.addCell(f);
                 }
-                
+           
                 doc.add(tbl);
-doc.add(starline);
+                doc.add(starline);
 
-Paragraph thanksMsg = new Paragraph("Thank you, Please Visit Again.");
-doc.add(thanksMsg);
+                Paragraph thanksMsg = new Paragraph("Thank you, Please Visit Again.");
+                doc.add(thanksMsg);
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
+            doc.close();
+setVisible(false);
+
+new SellMedicine(username).setVisible(true);
         }
+        else {
+    JOptionPane.showMessageDialog(null, "Please add some medicine to cart");
+}
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
