@@ -10,6 +10,7 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.table.TableModel;
+import dao.PharmacyUtils;
 
 /**
  *
@@ -331,7 +332,14 @@ public String getUniqueId(String prefix){
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
+             //Creating bill 
+             com.itextpdf.text.Document doc = new com.itextpdf.text.Document();
+
+            
         }
+        
+       
+        
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
