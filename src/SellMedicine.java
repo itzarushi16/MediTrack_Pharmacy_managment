@@ -347,20 +347,22 @@ public String getUniqueId(String prefix){
 
                 Paragraph starline = new Paragraph("***************************************************************");
                 doc.add(starline);
-            Paragraph details = new Paragraph("\tBill ID: " + billId + "\nDate: Paragraph" + new Date() + "\nTotal Paid: " + finalTotalPrice);
-          //  Paragraph details = new Paragraph("\tBill ID: " + billId + "\nDate: Paragraph" + new Date() + "\nTotal Paid: " + finalTotalPrice);
-               doc.add(details);
+                Paragraph details = new Paragraph("\tBill ID: " + billId + "\nDate: Paragraph" + new Date() + "\nTotal Paid: " + finalTotalPrice);
+                //  Paragraph details = new Paragraph("\tBill ID: " + billId + "\nDate: Paragraph" + new Date() + "\nTotal Paid: " + finalTotalPrice);
+                doc.add(details);
                 doc.add(starline);
 
-                
                 PdfPTable tbl = new PdfPTable(6);
-tbl.addCell("Medicine ID");
-tbl.addCell("Name");
-tbl.addCell("Company Name");
-tbl.addCell("Price Per Unit");
-tbl.addCell("No Of Units");
-tbl.addCell("Sub Total Price");
-
+                tbl.addCell("Medicine ID");
+                tbl.addCell("Name");
+                tbl.addCell("Company Name");
+                tbl.addCell("Price Per Unit");
+                tbl.addCell("No Of Units");
+                tbl.addCell("Sub Total Price");
+                for (int i = 0; i < cartTable.getRowCount(); i++) {
+                    String a = cartTable.getValueAt(i, 0).toString();
+                    String b = cartTable.getValueAt(i, 1).toString();
+                    String c = cartTable.getValueAt(i, 2).toString();
                 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
