@@ -16,6 +16,7 @@ public class ViewUser extends javax.swing.JFrame {
     private String username="";
 
     /**
+    
      * Creates new form ViewUser
      */
     public ViewUser() {
