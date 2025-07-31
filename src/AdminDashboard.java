@@ -20,6 +20,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         initComponents();
     }
 
+    
     public AdminDashboard(String tempUsername) {
         initComponents();
         username = tempUsername;
