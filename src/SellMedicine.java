@@ -5,6 +5,7 @@
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import common.OpenPdf;
 import dao.ConnectionProvider;
 import java.awt.Color;
 import javax.swing.JOptionPane;
@@ -57,7 +58,7 @@ try {
     JOptionPane.showMessageDialog(null, e);
 }
 }
-
+//mhh
 private void clearMedicineFields() {
     txtUniqueId.setText("");
     txtName.setText("");
@@ -232,10 +233,7 @@ public String getUniqueId(String prefix){
 
         cartTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Medicine ID", "Name", "Company Name", "Price Per Unit", "No. of Units", "Total Price"
@@ -380,16 +378,16 @@ public String getUniqueId(String prefix){
 
                 Paragraph thanksMsg = new Paragraph("Thank you, Please Visit Again.");
                 doc.add(thanksMsg);
+                OpenPdf.openById(String.valueOf(billId));
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
             doc.close();
-setVisible(false);
+            setVisible(false);
 
-new SellMedicine(username).setVisible(true);
-        }
-        else {
+            new SellMedicine(username).setVisible(true);
+        } else {
     JOptionPane.showMessageDialog(null, "Please add some medicine to cart");
 }
 
