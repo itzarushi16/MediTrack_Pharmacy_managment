@@ -14,6 +14,7 @@ import javax.swing.table.TableModel;
  */
 public class ViewMedicine extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form ViewMedicine
      */
