@@ -25,6 +25,7 @@ public class AddUser extends javax.swing.JFrame {
     /**
      * Creates new form AddUser
      */
+    
     public AddUser() {
         initComponents();
         iconLable.setVisible(false);
