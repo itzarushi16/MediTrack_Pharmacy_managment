@@ -10,6 +10,11 @@ package dao;
  */
 public class PharmacyUtils {
     
-    public static String billPath = "E:\\";
+    //public static String billPath = "E:\\";
+    //public static String billPath = "C:\\";
+    public static String billPath = System.getProperty("user.home") + "\\Documents\\PharmacyBills\\";
+    
+  //public static String billPath = "C:\\Users\\thar\\Documents\\PharmacyBills";
+
     
 }

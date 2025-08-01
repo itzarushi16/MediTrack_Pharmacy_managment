@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.table.TableModel;
 import dao.PharmacyUtils;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Date;
 /**
@@ -335,15 +336,19 @@ public String getUniqueId(String prefix){
                 JOptionPane.showMessageDialog(null, e);
             }
              //Creating bill 
-             com.itextpdf.text.Document doc = new com.itextpdf.text.Document();
+            com.itextpdf.text.Document doc = new com.itextpdf.text.Document();
             try {
+                File directory = new File(PharmacyUtils.billPath);
+                if (!directory.exists()) {
+                    directory.mkdirs();
+                }
 
                 PdfWriter.getInstance(doc, new FileOutputStream(PharmacyUtils.billPath + "/" + billId + ".pdf"));
                 doc.open();
-                Paragraph pharmacyName = new Paragraph("                               Pharmacy Management System\n");
-                doc.add(pharmacyName);
+                Paragraph pharmacyName = new Paragraph("                                              Pharmacy Management System\n");
+                doc.add(pharmacyName); 
 
-                Paragraph starline = new Paragraph("***************************************************************");
+                Paragraph starline = new Paragraph("*************************************************************************************************************");
                 doc.add(starline);
                 Paragraph details = new Paragraph("\tBill ID: " + billId + "\nDate: Paragraph" + new Date() + "\nTotal Paid: " + finalTotalPrice);
                 //  Paragraph details = new Paragraph("\tBill ID: " + billId + "\nDate: Paragraph" + new Date() + "\nTotal Paid: " + finalTotalPrice);
