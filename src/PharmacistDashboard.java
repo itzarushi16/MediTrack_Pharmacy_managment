@@ -52,7 +52,6 @@ public class PharmacistDashboard extends javax.swing.JFrame
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
@@ -62,11 +61,11 @@ public class PharmacistDashboard extends javax.swing.JFrame
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel1.setText("Dashboard");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 19, -1, -1));
+        jLabel1.setText("Pharmacist Dashboard");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 106, 1198, 10));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addMedicine.png"))); // NOI18N
         jButton1.setText("Add Medicine");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -74,9 +73,9 @@ public class PharmacistDashboard extends javax.swing.JFrame
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 163, 344, 129));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 400, 100));
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
         jButton2.setText("View Medicine");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -84,9 +83,9 @@ public class PharmacistDashboard extends javax.swing.JFrame
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 334, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 400, 110));
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
         jButton3.setText("Logout");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -94,9 +93,9 @@ public class PharmacistDashboard extends javax.swing.JFrame
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 642, 344, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 400, -1));
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/viewBill.png"))); // NOI18N
         jButton4.setText("View Bill");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -104,9 +103,9 @@ public class PharmacistDashboard extends javax.swing.JFrame
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(575, 303, 400, 138));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 400, 110));
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
         jButton5.setText("Profile");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +113,7 @@ public class PharmacistDashboard extends javax.swing.JFrame
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(575, 489, 400, -1));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 530, 310, 110));
 
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.png"))); // NOI18N
@@ -124,9 +123,9 @@ public class PharmacistDashboard extends javax.swing.JFrame
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(588, 642, 400, -1));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 10, 180, 90));
 
-        jButton7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/updateUser.png"))); // NOI18N
         jButton7.setText("Update Profile");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -134,12 +133,9 @@ public class PharmacistDashboard extends javax.swing.JFrame
                 jButton7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 489, 344, -1));
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 400, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1156, 19, 28, 32));
-
-        jButton8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sellMedicine.png"))); // NOI18N
         jButton8.setText("Sell Medicine");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -147,11 +143,11 @@ public class PharmacistDashboard extends javax.swing.JFrame
                 jButton8ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(575, 163, 400, -1));
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 400, 100));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adminDashboardBackground.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pharmacistdashboard (1).png"))); // NOI18N
         jLabel3.setText("jLabel3");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -259,7 +255,6 @@ if (a == 0) {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
