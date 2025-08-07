@@ -63,7 +63,7 @@ public class UpdateMedicine extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setText("Update Medicine");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 18, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, -1));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -71,15 +71,15 @@ public class UpdateMedicine extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(766, 18, -1, -1));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 80, 792, 4));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 0, 30, 40));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 81, 1200, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Medicine ID :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 99, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, -1, -1));
 
         txtMedicineId.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        getContentPane().add(txtMedicineId, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 96, 276, -1));
+        getContentPane().add(txtMedicineId, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, 276, -1));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton2.setText("Search");
@@ -88,27 +88,27 @@ public class UpdateMedicine extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(669, 96, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 200, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Name");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Company Name");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("Quantity");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 450, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setText("Add Quantity");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 560, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setText("Price Per Unit");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 157, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, -1, -1));
 
         txtName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtName.addActionListener(new java.awt.event.ActionListener() {
@@ -116,10 +116,10 @@ public class UpdateMedicine extends javax.swing.JFrame {
                 txtNameActionPerformed(evt);
             }
         });
-        getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 313, -1));
+        getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 313, -1));
 
         txtCompanyName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        getContentPane().add(txtCompanyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 313, -1));
+        getContentPane().add(txtCompanyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, 313, -1));
 
         txtQuantity.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtQuantity.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +127,7 @@ public class UpdateMedicine extends javax.swing.JFrame {
                 txtQuantityActionPerformed(evt);
             }
         });
-        getContentPane().add(txtQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 313, 30));
+        getContentPane().add(txtQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 480, 313, 30));
 
         txtAddQuantity.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtAddQuantity.addActionListener(new java.awt.event.ActionListener() {
@@ -135,10 +135,10 @@ public class UpdateMedicine extends javax.swing.JFrame {
                 txtAddQuantityActionPerformed(evt);
             }
         });
-        getContentPane().add(txtAddQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, 98, -1));
+        getContentPane().add(txtAddQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 560, 98, -1));
 
         txtPricePerUnit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        getContentPane().add(txtPricePerUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 191, 347, -1));
+        getContentPane().add(txtPricePerUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, 347, -1));
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/updateUser.png"))); // NOI18N
@@ -148,11 +148,10 @@ public class UpdateMedicine extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, 256, 76));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 380, 256, 76));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/all_pages_background.png"))); // NOI18N
-        jLabel8.setText("jLabel8");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/allpagesbg (1).png"))); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1210, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
