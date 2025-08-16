@@ -1,4 +1,4 @@
-# 💊 Pharmacy Management System  
+# 💊 MediTrack -Pharmacy Management System  
 
 ## 📖 Overview  
 The **Pharmacy Management System** is a Java-based desktop application that helps automate the day-to-day operations of a pharmacy.  
