@@ -3,6 +3,9 @@
 ## 📖 Overview  
 The **Pharmacy Management System** is a Java-based desktop application that helps automate the day-to-day operations of a pharmacy.  
 It provides two separate dashboards for **Admin** and **Pharmacist**, allowing them to manage medicines, sales, billing, and user profiles efficiently.  
+It provides dedicated dashboards for Administrators and Pharmacists, enabling seamless management of medicines, inventory, sales, billing, and user profiles.
+
+By eliminating manual record-keeping and reducing the chances of errors, the system ensures efficient workflows, real-time inventory tracking, accurate billing, and secure user management. With its intuitive interface powered by Java Swing and reliable JDBC–MySQL integration, the application not only improves operational efficiency but also empowers pharmacists to focus more on patient care while maintaining full control over business processes.
 
 This project is built using **Java Swing** for the frontend, **JDBC** for database connectivity, and **MySQL** as the backend database.  
 
