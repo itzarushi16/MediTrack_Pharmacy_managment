@@ -40,7 +40,8 @@ This project is built using **Java Swing** for the frontend, **JDBC** for databa
 - **Backend:** MySQL Database  
 - **Database Connectivity:** JDBC  
 - **Utilities:** PDF Handling, Image Assets  
-- **IDE:** NetBeans / Eclipse  
+- **IDE:** NetBeans / Eclipse
+- 
 
 ---
 
