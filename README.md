@@ -48,6 +48,8 @@ This project is built using **Java Swing** for the frontend, **JDBC** for databa
 - 
 
 ---
+<img width="1279" height="722" alt="Screenshot 2025-08-31 001759" src="https://github.com/user-attachments/assets/069a7f1d-e694-4c7a-8c02-bfe87b3570ca" />
+
 
 ## ⚙️ Installation & Setup  
 
@@ -77,3 +79,5 @@ String password = "yourpassword";
 
 3️⃣ Run the Project
 Build & Run Pharmacy.java (or Login.java)
+#Login Page Preview
+
